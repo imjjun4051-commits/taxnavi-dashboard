@@ -1,0 +1,13 @@
+{
+  "functions": {
+    "api/bizinfo.js": {
+      "maxDuration": 10
+    },
+    "api/parse-financials.js": {
+      "maxDuration": 30
+    },
+    "api/interpret-metrics.js": {
+      "maxDuration": 25
+    }
+  }
+}

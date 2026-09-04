@@ -1,0 +1,11 @@
+.vercel
+.env*
+
+# peer-cluster 도구
+tools/peer-cluster/cache/
+tools/peer-cluster/*.csv
+reports/
+__pycache__/
+tools/peer-cluster/peer-cluster.dryrun.json
+.DS_Store
+tools/screenshots/
