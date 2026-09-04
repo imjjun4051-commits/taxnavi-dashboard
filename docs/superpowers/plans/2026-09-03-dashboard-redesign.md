@@ -1,4 +1,4 @@
-# 텍스내비 대시보드 리디자인 + 기업마당 API 프록시 — 구현 계획
+# 택스네비 대시보드 리디자인 + 기업마당 API 프록시 — 구현 계획
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:executing-plans to implement this plan task-by-task (이 세션은 서브에이전트 사용 금지 → 인라인 실행). Steps use checkbox (`- [ ]`) syntax for tracking.
 
@@ -163,7 +163,7 @@ docs/superpowers/
 
 Run:
 ```bash
-cd ~/Desktop/텍스내비 && vercel link --yes --project taxnavi-dashboard 2>&1 | tail -3
+cd ~/Desktop/택스네비 && vercel link --yes --project taxnavi-dashboard 2>&1 | tail -3
 vercel dev --listen 3000 > /tmp/vercel-dev.log 2>&1 &
 sleep 8; curl -s -o /dev/null -w "%{http_code}\n" http://localhost:3000/api/bizinfo
 curl -s "http://localhost:3000/api/bizinfo?crtfcKey=TESTKEY&searchCnt=1" | head -c 300; echo
@@ -174,7 +174,7 @@ DEVELOPMENT_LOG.md에 "잘못된 키로 호출 시 기업마당이 돌려준 응
 
 - [x] **Step 7: 기존 자동 검증이 그대로 통과하는지 확인 (아직 화면은 옛 것)**
 
-Run: `cd ~/Desktop/텍스내비 && python3 tools/test-e2e.py 2>&1 | tail -3`
+Run: `cd ~/Desktop/택스네비 && python3 tools/test-e2e.py 2>&1 | tail -3`
 Expected: `총 49개 검사, 실패 0개`
 
 ---
@@ -337,7 +337,7 @@ async def main():
             await page.click('#btn-export-csv')
         d = await dl.value
         path = await d.path(); content = open(path, 'rb').read()
-        check('CSV: BOM + 한글 내용', content.startswith(b'\xef\xbb\xbf') and '텍스내비'.encode() in content and '통합고용'.encode() in content, d.suggested_filename)
+        check('CSV: BOM + 한글 내용', content.startswith(b'\xef\xbb\xbf') and '택스네비'.encode() in content and '통합고용'.encode() in content, d.suggested_filename)
 
         # 반응형 스크린샷 — 모바일(<768)은 하단 탭바 #mnav-*, 그 외 사이드바 #nav-*
         for w, name in [(320, 'mobile-320'), (768, 'tablet-768'), (1024, 'tablet-1024'), (1920, 'desktop-1920')]:
@@ -381,7 +381,7 @@ asyncio.run(main())
 
 - [x] **Step 2: 옛 화면에서 실행해 실패 확인**
 
-Run: `cd ~/Desktop/텍스내비 && python3 tools/test-e2e.py 2>&1 | tail -3`
+Run: `cd ~/Desktop/택스네비 && python3 tools/test-e2e.py 2>&1 | tail -3`
 Expected: 첫 검사 `FAIL 초기 화면: 개요 표시 + 빈 상태` 후 `#overview-empty [data-nav="input"]` 클릭에서 타임아웃 예외(옛 화면에 요소 없음) — 스크립트가 예외로 종료되어도 "실패 확인"으로 간주
 
 - [x] **Step 3: [CSS 1] 토큰 5줄 추가 + [CSS 2]~[CSS 6] 교체**
@@ -724,7 +724,7 @@ table.data, table.fin-table { width: 100%; border-collapse: collapse; font-size:
       </svg>
     </span>
     <div>
-      <p class="brand__name">텍스내비</p>
+      <p class="brand__name">택스네비</p>
       <p class="brand__tagline">내년 실적을 미리 보고, 세금은 미리 설계하세요</p>
     </div>
   </div>
@@ -1495,7 +1495,7 @@ function 시작() {
 
 - [x] **Step 6: 검증 실행 — 개요 5건(Task 3)만 FAIL, 나머지 전부 PASS**
 
-Run: `cd ~/Desktop/텍스내비 && python3 tools/test-e2e.py 2>&1 | grep -E "^FAIL|총 "`
+Run: `cd ~/Desktop/택스네비 && python3 tools/test-e2e.py 2>&1 | grep -E "^FAIL|총 "`
 Expected: `FAIL 개요: …` 5줄만 출력되고 `총 N개 검사, 실패 5개`. 다른 FAIL이 있으면 해당 렌더/CSS를 고친 뒤 재실행.
 
 ---
@@ -1513,14 +1513,14 @@ Expected: `FAIL 개요: …` 5줄만 출력되고 `총 N개 검사, 실패 5개`
 
 - [x] **Step 1: 검증 실행해 개요 5건 FAIL 확인**
 
-Run: `cd ~/Desktop/텍스내비 && python3 tools/test-e2e.py 2>&1 | grep -E "^FAIL 개요"`
+Run: `cd ~/Desktop/택스네비 && python3 tools/test-e2e.py 2>&1 | grep -E "^FAIL 개요"`
 Expected: `FAIL 개요: KPI 4개` 등 5줄
 
 - [x] **Step 2: `docs/tax-rules.json` 법인세에 신고일정 추가 (숫자는 JSON에만)**
 
 Run:
 ```bash
-cd ~/Desktop/텍스내비 && python3 - <<'PY'
+cd ~/Desktop/택스네비 && python3 - <<'PY'
 import json, io
 p = 'docs/tax-rules.json'
 j = json.load(open(p, encoding='utf-8'))
@@ -1593,7 +1593,7 @@ function 렌더_개요() {
 
 - [x] **Step 4: 전체 검증 통과**
 
-Run: `cd ~/Desktop/텍스내비 && python3 tools/test-e2e.py 2>&1 | tail -3`
+Run: `cd ~/Desktop/택스네비 && python3 tools/test-e2e.py 2>&1 | tail -3`
 Expected: `총 N개 검사, 실패 0개` (N ≈ 70). 스크린샷 `tools/screenshots/desktop-1920-overview.png` 등을 열어 라벨 겹침·넘침을 눈으로 확인.
 
 ---
@@ -1619,7 +1619,7 @@ Expected: `총 N개 검사, 실패 0개` (N ≈ 70). 스크린샷 `tools/screens
 
 Run:
 ```bash
-cd ~/Desktop/텍스내비 && vercel --prod --yes 2>&1 | tail -3
+cd ~/Desktop/택스네비 && vercel --prod --yes 2>&1 | tail -3
 # 출력의 https://…vercel.app 주소로
 TEST_URL=https://<배포주소> python3 tools/test-e2e.py 2>&1 | tail -3
 ```

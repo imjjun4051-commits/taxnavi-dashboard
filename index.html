@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="텍스내비 — 광주·전남 중소기업이 내년 실적을 미리 보고 세금을 사전에 설계하는 재무 내비게이터">
-<title>텍스내비 — 광주·전남 중소기업 재무 내비게이터</title>
+<meta name="description" content="택스네비 — 광주·전남 중소기업이 내년 실적을 미리 보고 세금을 사전에 설계하는 재무 내비게이터">
+<title>택스네비 — 광주·전남 중소기업 재무 내비게이터</title>
 <!-- 서체: Pretendard (외부 자원 중 유일하게 허용 — STEERING.md 2항). 오프라인이면 시스템 산세리프로 자동 대체 -->
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
@@ -430,7 +430,7 @@ table.data, table.fin-table { width: 100%; border-collapse: collapse; font-size:
       </svg>
     </span>
     <div>
-      <p class="brand__name">텍스내비</p>
+      <p class="brand__name">택스네비</p>
       <p class="brand__tagline">내년 실적을 미리 보고, 세금은 미리 설계하세요</p>
     </div>
   </div>
@@ -971,7 +971,7 @@ table.data, table.fin-table { width: 100%; border-collapse: collapse; font-size:
  }
 }</script>
 <script type="application/json" id="data-tax-rules">{
- "_설명": "텍스내비 절세 규칙 데이터. 세제는 매년 바뀌므로 아래 '기준연도'와 '출처'를 확인하고 수치만 고쳐 쓰세요. 이 파일을 수정하면 index.html 안의 <script id=\"data-tax-rules\"> 블록도 같은 내용으로 갱신해야 합니다.",
+ "_설명": "택스네비 절세 규칙 데이터. 세제는 매년 바뀌므로 아래 '기준연도'와 '출처'를 확인하고 수치만 고쳐 쓰세요. 이 파일을 수정하면 index.html 안의 <script id=\"data-tax-rules\"> 블록도 같은 내용으로 갱신해야 합니다.",
  "기준연도": 2026,
  "확인일": "2026-09-04",
  "면책문구": "이 서비스의 세금·공제 금액은 입력값을 바탕으로 한 단순 추정치입니다. 실제 세액은 과세표준 조정, 최저한세, 공제 한도, 사후관리 요건 등에 따라 달라지므로 신고 전 반드시 세무사 등 전문가의 확인을 받으세요.",
@@ -1602,7 +1602,7 @@ table.data, table.fin-table { width: 100%; border-collapse: collapse; font-size:
   "bsnsSumryCn": "사업 요약",
   "hashtags": "해시태그(지역·업종 검색용)",
   "pblancUrl": "공고 상세 URL",
-  "region": "텍스내비 지역 필터용 (광주 / 전남 / 전국)"
+  "region": "택스네비 지역 필터용 (광주 / 전남 / 전국)"
  },
  "공고": [
   {
@@ -10175,7 +10175,7 @@ function 렌더_분석() {
   $('#analysis-desc').hidden = !경고들.length;
   $('#analysis-desc').textContent = 경고들.length ? '⚠ ' + 경고들.join(' / ') : '';
   // 인쇄·PDF 저장 때만 보이는 머리글(회사명·기준연도·출력 시각)
-  $('#print-header').innerHTML = `<h1 style="font-size:20px;margin:0 0 4px">텍스내비 분석결과 — ${esc(상태.기업정보.회사명 || '기준 기업')}</h1>`
+  $('#print-header').innerHTML = `<h1 style="font-size:20px;margin:0 0 4px">택스네비 분석결과 — ${esc(상태.기업정보.회사명 || '기준 기업')}</h1>`
     + `<p class="small muted" style="margin:0">기준연도 ${연도목록()[2]}년 실적 · ${분.예측연도}년 예측 · 출력 ${new Date().toLocaleString('ko-KR')}</p>`;
   렌더_진단비교();
   렌더_비교군();

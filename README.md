@@ -1,4 +1,4 @@
-# 텍스내비 (TaxNavi)
+# 택스네비 (TaxNavi)
 
 > 내년 실적을 미리 보고, 세금은 미리 설계하세요 — 광주·전남 중소기업 재무 내비게이터
 
@@ -24,7 +24,7 @@
 
 ## 폴더 구조
 ```
-텍스내비/
+택스네비/
 ├─ index.html                 메인 웹앱 (데이터 인라인 포함, 이 파일만 있어도 동작)
 ├─ api/bizinfo.js              기업마당 API 프록시 (Vercel 서버리스 함수, 외부 패키지 없음)
 ├─ api/parse-financials.js     ERP CSV → GPT로 재무데이터 자동 인식 (Vercel 서버리스 함수)

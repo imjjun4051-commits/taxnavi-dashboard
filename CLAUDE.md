@@ -1,4 +1,4 @@
-# 텍스내비 — Claude Code 작업 규칙 (자동 로드 파일)
+# 택스네비 — Claude Code 작업 규칙 (자동 로드 파일)
 
 Claude Code는 프로젝트 폴더를 열면 이 `CLAUDE.md`를 **자동으로** 읽습니다.
 (STEERING.md·SPECS.md는 자동으로 읽히지 않으므로, 이 파일이 그 둘을 가리키는 역할을 합니다.)

@@ -115,7 +115,7 @@ def _정리(표: pd.DataFrame) -> pd.DataFrame:
     열 = ["corp_code", "corp_name", "stock_code", "시장", "induty_code", "매칭단계"]
     return 표[열].sort_values("corp_name").reset_index(drop=True)
 
-# 텍스내비 화면의 6개 업종 ↔ 한국표준산업분류(KSIC 10차) 2자리 대분류 범위
+# 택스네비 화면의 6개 업종 ↔ 한국표준산업분류(KSIC 10차) 2자리 대분류 범위
 # 앞자리 prefix 하나로는 "제조업 10~34"처럼 넓은 대분류를 표현할 수 없어 범위 목록으로 둔다.
 업종_KSIC범위 = {
     "manufacturing": [(10, 34)],                    # C 제조업
@@ -132,7 +132,7 @@ def _정리(표: pd.DataFrame) -> pd.DataFrame:
 
 
 def 업종별_비교군(표: pd.DataFrame, 업종코드: str) -> pd.DataFrame:
-    """텍스내비 6개 업종 중 하나에 해당하는 코스닥·코넥스 상장사를 KSIC 2자리 범위로 고른다."""
+    """택스네비 6개 업종 중 하나에 해당하는 코스닥·코넥스 상장사를 KSIC 2자리 범위로 고른다."""
     범위 = 업종_KSIC범위.get(업종코드)
     if not 범위:
         return _정리(표.iloc[0:0].assign(매칭단계=2))
